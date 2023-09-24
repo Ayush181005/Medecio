@@ -31,6 +31,9 @@
         <div class="doctor btn" onclick="doctor_signup()">
           <p>Doctor Login</p>
         </div>
+        <div class="doctor btn" onclick="patient_signup()">
+          <p>Patient Login</p>
+        </div>
       </div>
     </div>
     <div class="menu">
@@ -276,7 +279,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid my-form-cont">
+  <!-- <div class="container-fluid my-form-cont">
     <div class="container text-center p-5 mt-5" id="Appoinment">
       <h1 class="my-h1-und">MAKE AN APPOINTMENT</h1>
       <p class="lead p-3">
@@ -340,7 +343,7 @@
       
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="container text-center mt-5" id="contact">
     <h2 class="my-h1-und">CONTACT</h2>
     <p class="lead p-3">

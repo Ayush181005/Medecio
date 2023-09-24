@@ -78,7 +78,7 @@
     </head>
     <body>
         <div class="container">
-        <div class="header"> <h3><a class="nurse" href="doctor.php">doctor</a> / <a  href="receipnist.php">Receptionist</a></h3>
+        <div class="header"> <h3><a class="nurse" href="doctor.php">Doctor</a> / <a  href="receipnist.php">Receptionist</a></h3>
         </div>
         </div>
         <div class="searchbar">

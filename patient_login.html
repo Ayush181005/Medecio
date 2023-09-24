@@ -1,6 +1,10 @@
-<html>
-    <head><title>For Receptientist</title>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient login</title>
     <style>
         .header{
             display: flex;
@@ -187,81 +191,50 @@ background-image: linear-gradient(to right, aqua, #11998e);
     </style>
 </head>
 <body>
-<div class="container">
-        <div class="header"> <h3><a href="doctor.php">Doctor</a> / <a class="nurse" href="receipnist.php">Receptionist</a></h3>
-        </div>
-        
-        <div class="form">
-            <form action="" method ="POST">
-            <div class="form__group field">
-  <input type="text" class="form__field" placeholder="Name" name="PeName" id='name' required />
-  <label for="name" class="form__label">Name</label>
-</div>
-            <div class="form__group field">
-  <input type="number" class="form__field" placeholder="Name" name="PeAge" id='name' required />
-  <label for="name" class="form__label">Age</label>
-</div>
-            <div class="form__group field">
-  <input type="radio" class="form__field" placeholder="Name" name="Gender" id='name' required />
-  <label for="name" class="form__label">Male</label>
-</div>
-            <div class="form__group field">
-  <input type="radio" class="form__field" placeholder="Name" name="Gender" id='name' required />
-  <label for="name" class="form__label">Female</label>
-</div>
-            <div class="form__group field">
-  <input type="text" class="form__field" placeholder="Name" name="PeEmail" id='name' required />
-  <label for="name" class="form__label">Email</label>
-</div>
-            <div class="form__group field">
-  <input type="text" class="form__field" placeholder="Name" name="PeIssue" id='name' required />
-  <label for="name" class="form__label">Issue</label>
-</div>
-<div class="rec_submit_div">
-<input class="rec_submit" type="submit" name= "submit" value="submit">
-</div>
-<script>
-    let btn = document.querySelector("button");
-
-btn.addEventListener("click", active);
-
-function active() {
-  btn.classList.toggle("is_active");
-}
-</script>
-
-
-                <!-- <input type="text" name="PeName">
-                <input type="number" name="PeAge" >
-                <input type="radio" name="Gender" value="male">
-                <input type="radio" name="Gender" value="Female">
-                <input type="text" name="PeEmail">
-                <input type="text" name="PeIssue">
-                <input type="submit" name= "submit" value="submit"> -->
-
-            </form>
-        </div>
-<?php
-include "../connection.php";
-if(isset($_POST['submit'])){
-    $PeName =$_POST['PeName'];
-    $PeAge = $_POST['PeAge'];
-    $Gender = $_POST['Gender'];
-    $PeEmail = $_POST['PeEmail'];
-    $PeIssue = $_POST['PeIssue'];
-    $email = $_COOKIE['emailid'];
-    $tableName = 'user_' . preg_replace("/[^a-zA-Z0-9]+/", "", $email);                  
-    $insertQue = "insert into $tableName (PeName,PeAge,PeGender,PeEmail,PeIssue) values ('$PeName','$PeAge','$Gender','$PeEmail','$PeIssue')";
-    $res = mysqli_query($con,$insertQue);
-    if($res){
-        ?>
-        <script>
-            location.replace("receipnist.php");
-        </script>
-        <?php
-    }
-}
-?>
-</body>
-
-    </html>
+    <div class="container">
+            <div class="header"> <h3><a href="doctor.php">doctor</a> / <a class="nurse" href="receipnist.php">Receptionist</a></h3>
+            </div>
+            
+            <div class="form">
+                <form action="" method ="POST">
+                <div class="form__group field">
+      <input type="text" class="form__field" placeholder="Name" name="PeName" id='name' required />
+      <label for="name" class="form__label">Name</label>
+    </div>
+                <div class="form__group field">
+      <input type="number" class="form__field" placeholder="Name" name="PeAge" id='name' required />
+      <label for="name" class="form__label">Age</label>
+    </div>
+                <div class="form__group field">
+      <input type="radio" class="form__field" placeholder="Name" name="Gender" id='name' required />
+      <label for="name" class="form__label">Male</label>
+    </div>
+                <div class="form__group field">
+      <input type="radio" class="form__field" placeholder="Name" name="Gender" id='name' required />
+      <label for="name" class="form__label">Female</label>
+    </div>
+                <div class="form__group field">
+      <input type="text" class="form__field" placeholder="Name" name="PeEmail" id='name' required />
+      <label for="name" class="form__label">Email</label>
+    </div>
+                <div class="form__group field">
+      <input type="text" class="form__field" placeholder="Name" name="PeIssue" id='name' required />
+      <label for="name" class="form__label">Issue</label>
+    </div>
+    <div class="rec_submit_div">
+    <input class="rec_submit" type="submit" name= "submit" value="submit">
+    </div>
+    
+    
+                    <!-- <input type="text" name="PeName">
+                    <input type="number" name="PeAge" >
+                    <input type="radio" name="Gender" value="male">
+                    <input type="radio" name="Gender" value="Female">
+                    <input type="text" name="PeEmail">
+                    <input type="text" name="PeIssue">
+                    <input type="submit" name= "submit" value="submit"> -->
+    
+                </form>
+            </div>
+    </body>
+</html>
