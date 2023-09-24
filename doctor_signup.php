@@ -136,10 +136,44 @@ session_start();
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class="mb-4">
+                                            <label for="PeLocation" class="form__label">Location</label>
                                             <div id='map' style='width: 100%; height: 300px;'></div>
                                             <input type="hidden" id="PeLocation" name="PeLocation">
-                                            <label for="PeLocation" class="form__label">Location</label>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-outline flex-fill mb-0">
+                                            <label for="spciality">Speciality:</label>
+                                            <select name="spciality" id="spciality">
+                                                <option value="family doctor">Family Doctor</option>
+                                                <option value="pulmonologist">Pulmonologist</option>
+                                                <option value="cardiologist">Cardiologist</option>
+                                                <option value="neurologist ">Neurologist</option>
+                                                <option value="oncologist">Oncologist</option>
+                                                <option value="endocrinologist">Endocrinologist</option>
+                                                <option value="rheumatologist">Rheumatologist</option>
+                                                <option value="gastroenterologist">Gastroenterologist</option>
+                                                <option value="psychiatrist,addiction specialist">Psychiatrist, Addiction Specialist</option>
+                                                <option value="allergist">Allergist</option>
+                                                <option value="hematologist ">Hematologist</option>
+                                                <option value="psychologist,psychiatrist">Psychologist, Psychiatrist</option>
+                                                <option value="surgeon ">Surgeon</option>
+                                                <option value="allergist,pulmonologist">Allergist, Pulmonologist</option>
+                                                <option value="neurologist,neurosurgeon">Neurologist, Neurosurgeon</option>
+                                                <option value="urologist">Urologist</option>
+                                                <option value="cardiologist,hematologist">Cardiologist, Hematologist</option>
+                                                <option value="orthopedist">Orthopedist</option>
+                                                <option value="oncologist">Oncologist</option>
+                                                <option value="gynecologist">Gynecologist</option>
+                                                <option value="ophthalmologist">Opthalmologist</option>
+                                                <option value="urologist,gynecologist">Urologist, Gynecologist</option>
+                                                <option value="dermatologist ">Dermatologist</option>
+                                                <option value="vascular surgeon">Vascular Surgeon</option>
+                                                <option value="nephrologist ">Nephrologist</option>
+                                                <option value="gastroenterologist">Gastroenterologist</option>
+                                            </select>
+                                            </div>
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -172,6 +206,7 @@ $cname = $_POST['cname'];
 $number = $_POST['number'];
 $email = $_POST['email'];
 $PeLocation = $_POST['PeLocation'];
+$spciality = $_POST['spciality'];
 $pass = mysqli_real_escape_string($con,$_POST['pass']);
 $cpass =password_hash($pass,PASSWORD_BCRYPT);  
 
@@ -188,7 +223,7 @@ if($emailcount>0){
         <?php
 }
 else {
-        $insertQue = "insert into registration(name,cname,number,email,pass,location) values ('$name','$cname','$number','$email','$cpass','$PeLocation')";
+        $insertQue = "insert into registration(name,cname,number,email,pass,location,spciality) values ('$name','$cname','$number','$email','$cpass','$PeLocation','$spciality')";
         $res = mysqli_query($con,$insertQue);
         if($res){
             ?>
