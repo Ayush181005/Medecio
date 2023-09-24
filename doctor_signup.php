@@ -14,6 +14,64 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Mapbox API Imports -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <script>
+        // Mapbox GL JS
+        function makemap(lat, lng){
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXl1c2gxODEwIiwiYSI6ImNrZzFydzhrczJ1ODMycnM4M3NzYnl0bGsifQ.3HfP_urTjjDz4_s7OtD-LA';
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [lng, lat], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+    // Set marker options.
+    const marker = new mapboxgl.Marker({
+        color: "#110000",
+        draggable: true
+    })
+    .setLngLat([lng, lat])
+    .addTo(map);
+
+    document.getElementById("PeLocation").value = [lng, lat]; // Set the value of the hidden input field to the marker's coordinates (by default to location of user)
+
+    function onDragEnd() {
+      let {lng, lat} = marker.getLngLat();
+      console.log("Now the marker is at: " + lat, lng);
+      document.getElementById("PeLocation").value = [lng, lat];
+    }
+
+    marker.on('dragend', onDragEnd);
+  }
+
+
+
+
+
+ // Get location of user
+    if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+        }
+        else 
+        {
+            alert('It seems like Geolocation, which is required for this page, is not enabled in your browser.');
+        }       
+        
+        function successFunction(position) {
+            let lat = position.coords.latitude;
+            let lng = position.coords.longitude;
+            console.log("Location is: " + lat, lng);
+            makemap(lat, lng);
+        }
+
+        function errorFunction(position) {
+            console.error("An error has occured while retrieving location");
+        }
+  </script>
 </head>
 
 <body>
@@ -21,7 +79,8 @@ session_start();
     doctor name
     email
     password
-    number -->
+    number
+    location -->
     <section class="vh-100" style="background-color: #eee;">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -76,6 +135,13 @@ session_start();
                                                     password</label>
                                             </div>
                                         </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div id='map' style='width: 100%; height: 300px;'></div>
+                                            <input type="hidden" id="PeLocation" name="PeLocation">
+                                            <label for="PeLocation" class="form__label">Location</label>
+                                        </div>
+
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <input type = "submit" value = "Register" class="btn btn-primary btn-lg" name = "submit1">
                                         </div>
@@ -105,6 +171,7 @@ $name =$_POST['name'];
 $cname = $_POST['cname'];
 $number = $_POST['number'];
 $email = $_POST['email'];
+$PeLocation = $_POST['PeLocation'];
 $pass = mysqli_real_escape_string($con,$_POST['pass']);
 $cpass =password_hash($pass,PASSWORD_BCRYPT);  
 
@@ -121,7 +188,7 @@ if($emailcount>0){
         <?php
 }
 else {
-        $insertQue = "insert into registration(name,cname,number,email,pass) values ('$name','$cname','$number','$email','$cpass')";
+        $insertQue = "insert into registration(name,cname,number,email,pass,location) values ('$name','$cname','$number','$email','$cpass','$PeLocation')";
         $res = mysqli_query($con,$insertQue);
         if($res){
             ?>
@@ -135,6 +202,9 @@ else {
 }
 }
 ?>
+<script>
+    
+</script>
 </body>
 <script src="script.js"></script>
 
