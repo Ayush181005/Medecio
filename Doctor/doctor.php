@@ -98,6 +98,7 @@ cursor: pointer;
     <input class="search-btn fas fa-search" id="search_submit" type="submit" name="submit">
       </span>
   </form>
+  <br>
   <script>
     let search_icon=document.getElementById("search_icon") 
     let search_submit=document.getElementById("search_submit") 
@@ -107,17 +108,27 @@ cursor: pointer;
     })
     
     </script>
-</div>
+<!-- </div>
             <table class="table">
                 <tr>
                     <th class="pname">Patient Name</th>
                     <th class="pissue">Patient Issue</th>
                     <th class="pissue">Patient Issue</th>
                 </tr>
-                </tr>
+                 -->
             <?php
             include '../connection.php';
             if(isset($_POST['submit'])){
+              ?>
+
+<table class="table">
+                <tr>
+                    <th class="pname">Patient Name</th>
+                    <th class="pissue">Patient Issue</th>
+                    <th class="pissue">Patient Issue</th>
+                </tr>
+                
+              <?php
             $PeEmail =$_POST['PeEmail'];
             $email = $_COOKIE['emailid'];      
             $tableName = 'user_' . preg_replace("/[^a-zA-Z0-9]+/", "", $email);
