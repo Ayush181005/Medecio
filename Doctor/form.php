@@ -212,6 +212,61 @@
 .rec_submit:hover{
 background-image: linear-gradient(to right, aqua, #11998e);
 }
+.vcbtn {
+            display: flex;
+            justify-content: center;
+            transition: display 0.5s linear;
+            margin-top: 10px;
+            position: absolute;
+            margin-left: 100px;
+            margin-top: -30px;
+
+        }
+
+        .done {
+            display: flex;
+            border: 3px solid #3fbbc0;
+            width: fit-content;
+            padding: 10px 30px;
+            border-radius: 20px;
+            transition: background-color 0.3s linear;
+        }
+
+        .done:hover {
+            cursor: pointer;
+            background-color: #3fbbc0;
+        }
+
+        #stop1,
+        #stop2 {
+            display: none;
+        }
+
+        .rec_submit_div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rec_submit {
+            font-size: 15px;
+            width: 150px;
+            height: 40px;
+            margin-top: 50px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: white;
+        }
+
+        .rec_submit:hover {
+            background-image: linear-gradient(to right, aqua, #11998e);
+        }
+
+        .extra {
+            height: 50px;
+        }
+        .change{
+            top: -30;
+        }
     </style>
 </head>
 
@@ -235,51 +290,61 @@ background-image: linear-gradient(to right, aqua, #11998e);
         </div>
 
         <div class="form">
-            <form action="" method="POST">
+        <form action="" method="POST">
                 <div class="form__group field">
-                    <input type="text" class="form__field" placeholder="Name" name="PeName" id='name' value="<?php echo $arr['PeName'];?>" required />
+                    <input type="text" class="form__field" placeholder="Name" name="PeName" id='name'
+                        value="<?php echo $arr['PeName'];?>" required />
                     <label for="name" class="form__label">Name</label>
                 </div>
                 <div class="form__group field">
-                    <input type="number" class="form__field" placeholder="Name" name="PeAge" id='name'value="<?php echo $arr['PeAge'];?>" required />
+                    <input type="number" class="form__field" placeholder="Name" name="PeAge" id='name'
+                        value="<?php echo $arr['PeAge'];?>" required />
                     <label for="name" class="form__label">Age</label>
                 </div>
                 <div class="form__group field">
-                    <input type="text" class="form__field" placeholder="Name" name="PeEmail" id='name'value="<?php echo $arr['PeEmail'];?>" required />
+                    <input type="text" class="form__field" placeholder="Name" name="PeEmail" id='name'
+                        value="<?php echo $arr['PeEmail'];?>" required />
                     <label for="name" class="form__label">Email</label>
                 </div>
                 <div class="form__group field">
-                    <input type="text" class="form__field" placeholder="Name" name="PeIssue" id='name'value="<?php echo $arr['PeIssue'];?>" required />
+                    <input type="text" class="form__field" placeholder="Name" name="PeIssue" id='name'
+                        value="<?php echo $arr['PeIssue'];?>" required />
                     <label for="name" class="form__label">Issue</label>
                 </div>
-
-
+                <div class="extra"></div>
+                <!-------------- This section ------------>
+                <div class="vcbtn">
+                    <div title="click to start recording" class="done" id="start1"><i class="fa-solid fa-play"
+                            style="color: #000000;"></i></div>
+                    <div title="click to stop recording" class="done" id="stop1"><i class="fa-solid fa-stop"
+                            style="color: #000000;"></i></div>
+                </div>
+                <!-- ---------------------------------- -->
                 <div class="form__group field">
                     <textarea class="form__field" name="PeDES" id="Description" cols="30" rows="10" required></textarea>
-                    <label for="name" class="form__label">Description</label>
-                    <!-------------- This section ------------>
-                    <div class="vcbtn">
-                    <div title="click to start recording" class="done" id="start1"><i class="fa-solid fa-play" style="color: #000000;"></i></div>
-                    <div title="click to stop recording" class="done" id="stop1"><i class="fa-solid fa-stop" style="color: #000000;"></i></div>
+                    <label for="name" class="form__label change">Description</label>
+
                 </div>
-                    <!-- ---------------------------------- -->
+                <div class="extra"></div>
+                <!------------ This section --------------->
+                <div class="vcbtn">
+                    <div title="click to start recording" class="done" id="start2"><i class="fa-solid fa-play"
+                            style="color: #000000;"></i></div>
+                    <div title="click to stop recording" class="done" id="stop2"><i class="fa-solid fa-pause"
+                            style="color: #000000;"></i></div>
                 </div>
+                <!-- ----------------------------------- -->
                 <div class="form__group field">
                     <textarea class="form__field" name="Pecare" id="Advice" cols="30" rows="10" required></textarea>
 
-                    <label for="name" class="form__label">Advice</label>
+                    <label for="name" class="form__label change">Advice</label>
 
-                    <!------------ This section --------------->
-                    <div class="vcbtn">
-                        <div title="click to start recording" class="done" id="start2"><i class="fa-solid fa-play" style="color: #000000;"></i></div>
-                        <div title="click to stop recording" class="done" id="stop2"><i class="fa-solid fa-pause" style="color: #000000;"></i></div>
-                    </div>
-                    <!-- ----------------------------------- -->
+
                 </div>
                 <div class="rec_submit_div">
-<input class="rec_submit" type="submit" name= "submit" value="submit">
-</div>
-                </form>
+                    <input class="rec_submit" type="submit" name="submit" value="submit">
+                </div>
+            </form>
                 <?php
         include "../connection.php";
 if(isset($_POST['submit'])){
