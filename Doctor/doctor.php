@@ -2,6 +2,7 @@
     <head>
         <title>For Doctor</title>
         <script src="https://kit.fontawesome.com/50c045cb63.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <style>
     body {
   font-family: "Poppins", sans-serif;
@@ -74,6 +75,9 @@
   color: #3fbbc0;
   background: transparent;
 }
+.search_icon:hover{
+cursor: pointer;
+}
 </style>
     </head>
     <body>
@@ -87,12 +91,23 @@
 
     <input type="email" class="searchbox" name="PeEmail" placeholder="Search..">
     <span class="search-btn-wrap">
-    <input class="search-btn fa fa-search" type="submit" name = "submit">
+    <span class="material-symbols-outlined search_icon" id="search_icon" style="
+    margin-top: 2px;
+    margin-right: 5px;
+">search</span>
+    <input class="search-btn fas fa-search" id="search_submit" type="submit" name="submit">
       </span>
   </form>
+  <script>
+    let search_icon=document.getElementById("search_icon") 
+    let search_submit=document.getElementById("search_submit") 
+    search_submit.style.display="none"
+    search_icon.addEventListener("click",()=>{
+      search_submit.click()
+    })
+    
+    </script>
 </div>
-                <!-- <input type="email" name = "PeEmail">
-                <input type="submit" value="search" name="submit"> -->
             <table class="table">
                 <tr>
                     <th class="pname">Patient Name</th>
@@ -127,4 +142,5 @@
         </div>
         </div>
     </body>
+
 </html>
