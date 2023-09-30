@@ -119,21 +119,21 @@ cursor: pointer;
             <?php
             include '../connection.php'; 
             if(isset($_POST['submit'])){
-              ?>
-
-<table class="table">
-                <tr>
-                    <th class="pname">Patient Name</th>
-                    <th class="pissue">Patient Issue</th>
-                    <th class="pissue">Patient Issue</th>
-                </tr>
-                
-              <?php
             $PeEmail =$_POST['PeEmail'];
             $email = $_COOKIE['emailid'];      
             $tableName = 'user_' . preg_replace("/[^a-zA-Z0-9]+/", "", $email);
             $que = "select * from $tableName where PeEmail ='$PeEmail'";
             $query = mysqli_query($con , $que);
+            if($res = mysqli_fetch_array($query)){
+              ?>
+              <table class="table">
+                              <tr>
+                                  <th class="pname">Patient Name</th>
+                                  <th class="pissue">Patient Issue</th>
+                                  <th class="pissue">Patient Issue</th>
+                              </tr>
+                        
+                            <?php
            while( $res = mysqli_fetch_array($query)){
             ?> 
     <tr>
@@ -146,6 +146,15 @@ cursor: pointer;
 
             <?php
            }
+          }
+          else{
+            ?>
+            <script>
+              alert("please insert this email Patient First");
+            </script>
+            <?php
+
+          }
             }
             ?>
                         </table>
