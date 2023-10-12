@@ -202,12 +202,16 @@ background-image: linear-gradient(to right, aqua, #11998e);
   <label for="name" class="form__label">Age</label>
 </div>
             <div class="form__group field">
-  <input type="radio" class="form__field" placeholder="Name" name="Gender" id='name' required />
+  <input type="radio" class="form__field" placeholder="Name" value="Male" name="Gender" id='name' checked />
   <label for="name" class="form__label">Male</label>
 </div>
             <div class="form__group field">
-  <input type="radio" class="form__field" placeholder="Name" name="Gender" id='name' required />
+  <input type="radio" class="form__field" placeholder="Name" value="FeMale" name="Gender" id='name'/>
   <label for="name" class="form__label">Female</label>
+</div>
+<div class="form__group field">
+  <input type="text" class="form__field" placeholder="Name" name="PeNumber" id='name' required />
+  <label for="name" class="form__label">Number</label>
 </div>
             <div class="form__group field">
   <input type="text" class="form__field" placeholder="Name" name="PeEmail" id='name' required />
@@ -249,7 +253,9 @@ if(isset($_POST['submit'])){
     $Gender = $_POST['Gender'];
     $PeEmail = $_POST['PeEmail'];
     $PeIssue = $_POST['PeIssue'];
+    $PeNumber = $_POST['PeNumber'];
     $email = $_COOKIE['emailid'];
+    
     $tableName = 'user_' . preg_replace("/[^a-zA-Z0-9]+/", "", $email);                  
     $insertQue = "insert into $tableName (PeName,PeAge,PeGender,PeEmail,PeIssue) values ('$PeName','$PeAge','$Gender','$PeEmail','$PeIssue')";
     $res = mysqli_query($con,$insertQue);

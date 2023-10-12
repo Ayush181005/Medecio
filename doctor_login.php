@@ -91,6 +91,7 @@
                             PeAge INT(255),
                             PeGender varchar(255),
                             PeEmail varchar(255),
+                            PeNumber varchar(255),
                             PeIssue varchar(255),
                             PeDES varchar(255),
                             Pecare varchar(255)
